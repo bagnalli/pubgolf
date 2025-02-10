@@ -1,33 +1,43 @@
 import ScoreInput from "./ScoreInput";
+import "../styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function PlayerCard({ player, handleScoreChange, handlePenalty, getTotalScore }) {
     return (
-        <div className="mb-4 p-4 border rounded-lg shadow">
-            <div className="flex items-center mb-2">
+        <div className="card mb-4 shadow-sm">
+            <div className="card-header d-flex align-items-center">
                 <img
                     src={player.photo || "https://via.placeholder.com/50"}
                     alt={player.name}
-                    className="w-12 h-12 rounded-full mr-4"
+                    className="rounded-circle me-2 player-photo"
                 />
-                <h2 className="text-lg font-semibold">{player.name}</h2>
+                <h5 className="mb-0">{player.name}</h5>
             </div>
-            <div className="grid grid-cols-4 gap-2 text-sm">
-                <span>Hole</span>
-                <span>Par</span>
-                <span>Score</span>
-                <span>Penalty</span>
-                {player.holes.map((hole, index) => (
-                    <ScoreInput
-                        key={index}
-                        holeIndex={index}
-                        hole={hole}
-                        playerId={player.id}
-                        handleScoreChange={handleScoreChange}
-                        handlePenalty={handlePenalty}
-                    />
-                ))}
+            <div className="card-body">
+                <table className="table table-bordered text-center">
+                    <thead className="table-dark">
+                        <tr>
+                            <th>Hole</th>
+                            <th>Par</th>
+                            <th>Score</th>
+                            <th>Penalty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {player.holes.map((hole, index) => (
+                            <ScoreInput
+                                key={index}
+                                holeIndex={index}
+                                hole={hole}
+                                playerId={player.id}
+                                handleScoreChange={handleScoreChange}
+                                handlePenalty={handlePenalty}
+                            />
+                        ))}
+                    </tbody>
+                </table>
+                <p className="fw-bold">Total Score: {getTotalScore(player)}</p>
             </div>
-            <p className="mt-2 font-bold">Total Score: {getTotalScore(player)}</p>
         </div>
     );
 }

@@ -1,20 +1,27 @@
+import "../styles.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 export default function ScoreInput({ holeIndex, hole, playerId, handleScoreChange, handlePenalty }) {
     return (
-        <>
-            <span>{holeIndex + 1}</span>
-            <span>{hole.par}</span>
-            <input
-                type="number"
-                value={hole.score}
-                onChange={(e) => handleScoreChange(playerId, holeIndex, e.target.value)}
-                className="border p-1 w-12"
-            />
-            <input
-                type="number"
-                value={hole.penalty}
-                onChange={(e) => handlePenalty(playerId, holeIndex, e.target.value)}
-                className="border p-1 w-12"
-            />
-        </>
+        <tr>
+            <td>{holeIndex + 1}</td>
+            <td>{hole.par}</td>
+            <td>
+                <input
+                    type="number"
+                    className="form-control"
+                    value={hole.score}
+                    onChange={(e) => handleScoreChange(playerId, holeIndex, e.target.value)}
+                />
+            </td>
+            <td>
+                <input
+                    type="number"
+                    className="form-control"
+                    value={hole.penalty}
+                    onChange={(e) => handlePenalty(playerId, holeIndex, e.target.value)}
+                />
+            </td>
+        </tr>
     );
 }
