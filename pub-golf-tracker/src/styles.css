@@ -25,3 +25,66 @@ h1 {
     width: 80px;
     margin: auto;
 }
+
+/* LEADERBOARD */
+/* Card Styling */
+.leaderboard {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #f8f9fa;
+    /* Light gray background */
+    border-radius: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Title */
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Player Section */
+.leaderboard-player {
+    display: flex;
+    align-items: center;
+}
+
+.leaderboard-photo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 10%;
+}
+
+.leaderboard-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* List Styling */
+.list-group-item {
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    /* White background for items */
+    transition: background-color 0.3s;
+}
+
+.list-group-item:hover {
+    background-color: #f1f1f1;
+    /* Light hover effect */
+}
+
+/* Badge Styling */
+.badge {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+}
+
+/* Bottom Border */
+.border-bottom {
+    border-bottom: 1px solid #e0e0e0;
+}

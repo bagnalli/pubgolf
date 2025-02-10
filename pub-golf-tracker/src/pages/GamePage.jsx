@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PlayerCard from "../components/PlayerCard";
+import Leaderboard from "../components/Leaderboard";
 import "../styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -58,9 +59,17 @@ export default function GamePage() {
         return player.holes.reduce((total, hole) => total + hole.score + hole.penalty, 0);
     };
 
+    const getLeaderboard = () => {
+        return [...players].sort((a, b) => getTotalScore(a) - getTotalScore(b));
+    };
+
     return (
         <div className="container text-center mt-4">
             <h1 className="game-title">Pub Golf Scorecard</h1>
+
+            <Leaderboard players={players} getTotalScore={getTotalScore} />
+
+            {/* // Map each player */}
             <div className="row">
                 {players.map(player => (
                     <div className="col-md-6" key={player.id}>
